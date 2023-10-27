@@ -1,8 +1,9 @@
-import "./Home/Home.scss";
+import Feature from "../../components/Home/Feature";
+import { Grid } from '@mui/material';
 
 const Home = () => {
   return (
-    <div>Home</div>
+      <Feature />
   )
 }
 

@@ -29,7 +29,12 @@ const Footer = () => {
         }}
       >
         <StyledToolbar>
-          Footer
+          <Box>
+          .Baeht.
+          </Box>
+          <Box>
+          © .Baeht. International Ltd. 2023
+          </Box>
         </StyledToolbar>
       </Box>
     </AppBar>

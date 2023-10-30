@@ -53,7 +53,7 @@ const Hero = () => {
               Assured peace of mind by maintaining your property. Search for great deals on quailty home services and keep track of your greatest asset, your home.
             </Typography>
             <CustomButton
-              backgroundColor="#0F1B4C"
+              backgroundColor="#849EB9"
               color="#fff"
               buttonText="More About Us"
               heroBtn={true}

@@ -19,7 +19,7 @@ const CustomButton = ({
     textTransform: "none",
     textUnderline:"none",
     display: "block",
-    border: "2px solid black",
+    border: "2px solid #849EB9",
     "&:hover": {
       backgroundColor: backgroundColor,
       color: color,

@@ -8,7 +8,15 @@ import { Link } from 'react-router-dom'
 
 const CategoryCards = ({item}) => {
   return (
-    <Card sx={{ maxWidth: 240 }}>
+    <Card sx={{ 
+      border: 2,
+      borderColor: "primary.main",
+      boxShadow: 3,
+      p:1.5, 
+      m:1, 
+      maxWidth: 240
+      }}
+    >
       <Link to="/services?cat=design">
         <CardMedia
           sx={{ height: 200 }}

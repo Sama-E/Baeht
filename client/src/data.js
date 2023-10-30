@@ -9,32 +9,32 @@ export const catcards = [
   {
     id: 1,
     title:"Plumbing",
-    img:{Plumber},
+    img:"https://images.pexels.com/photos/7532110/pexels-photo-7532110.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
   },
   {
     id: 2,
     title:"Electrician",
-    img:{Electrician},
+    img:"https://images.pexels.com/photos/7532110/pexels-photo-7532110.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
   },
   {
     id: 3,
     title:"Roofer",
-    img:{Roofer},
+    img:"https://images.pexels.com/photos/7532110/pexels-photo-7532110.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
   },
   {
     id: 4,
     title:"Painter",
-    img:{Painter},
+    img:"https://images.pexels.com/photos/7532110/pexels-photo-7532110.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
   },
   {
     id: 5,
     title:"Landscaper",
-    img:{Landscaper},
+    img:"https://images.pexels.com/photos/7532110/pexels-photo-7532110.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
   },
   {
     id: 6,
     title:"Designer",
-    img:{Designer},
+    img:"https://images.pexels.com/photos/7532110/pexels-photo-7532110.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
   },
 
 

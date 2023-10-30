@@ -72,8 +72,11 @@ const Navbar = () => {
           .Baeht.
         </Typography>
         <HouseIcon  sx={{ display: { xs: "block", sm: "none" } }} />
-        <Search>
-          <InputBase placeholder="search..." />
+        <Search sx={{ display: { xs: "none", sm: "block" } }}>
+          <InputBase placeholder="search for a service ..." />
+        </Search>
+        <Search sx={{ display: { xs: "block", sm: "none" } }}>
+          <InputBase placeholder="search ..." />
         </Search>
         <Icons>
           {/* <Badge badgeContent={4} color="error">

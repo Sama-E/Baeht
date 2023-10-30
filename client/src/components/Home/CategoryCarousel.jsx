@@ -6,10 +6,9 @@ import { Box } from '@mui/material';
 
 const CategoryCarousel = () => {
 
-
   return (
     <>
-    <Box sx={{ display: { xs: "none", sm:"none", md: "block" }}}>
+    <Box sx={{ p: 3, display: { xs: "none", sm:"none", md: "block" }}}>
       <Slider slidesToShow={3} arrowsScroll={4} centerMode={false} centerPadding={80}>
         {catcards.map(catcard => (
           <CategoryCards item={catcard} key={catcard.id} />

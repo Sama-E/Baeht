@@ -100,8 +100,8 @@ const Guide = () => {
             }}
           >
             <Typography
-              variant="body2"
-              sx={{ fontWeight: "bold", fontSize: "14px", color: "#0689FF" }}
+              variant="h1"
+              sx={{ fontWeight: "bold", fontSize: "14px", color: "primary.main" }}
             >
               Home Services and Materials
             </Typography>
@@ -131,7 +131,7 @@ const Guide = () => {
           >
             <Typography
               variant="body2"
-              sx={{ fontWeight: "bold", fontSize: "14px", color: "#0689FF" }}
+              sx={{ fontWeight: "bold", fontSize: "14px", color: "primary.main" }}
             >
               Track Gains and Disbursements
             </Typography>

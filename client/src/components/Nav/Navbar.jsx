@@ -19,13 +19,12 @@ import HouseIcon from '@mui/icons-material/House';
 const StyledToolbar = styled(Toolbar)({
   display: "flex",
   justifyContent: "space-between",
-	backgroundColor: "#FAFCFD"
+	backgroundColor: "#FAFCFD",
 });
 
 const Search = styled("div")(({ theme }) => ({
   backgroundColor: "#FAFCFD",
   padding: "0 10px",
-  // borderRadius: theme.shape.borderRadius,
   width: "30%",
 	underline: "always",
 }));
@@ -60,6 +59,14 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   return (
     <AppBar position="sticky">
+      <Box sx={{ 
+        border: 3, 
+        borderColor: 'primary.main', 
+        borderRadius: 1,
+        boxShadow: 3,
+        margin: "1px"
+        }}
+      >
       <StyledToolbar>
         <Typography variant="h6" sx={{ display: { xs: "none", sm: "block" } }}>
           .Baeht.
@@ -155,6 +162,7 @@ const Navbar = () => {
         </Menu>
       )} */}
 
+      </Box>
     </AppBar>
   );
 };

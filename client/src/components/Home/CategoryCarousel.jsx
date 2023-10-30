@@ -1,5 +1,5 @@
 import React from 'react'
-import CategoryCards from '../Styles/CategoryCards';
+import CategoryCards from '../Cards/CategoryCards';
 import Slider from 'infinite-react-carousel';
 import { catcards } from '../../data';
 import { Box } from '@mui/material';

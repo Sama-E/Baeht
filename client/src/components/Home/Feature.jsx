@@ -1,5 +1,5 @@
 import DemoPaper from '@mui/material/Paper';
-import { Grid, Box } from '@mui/material';
+import { Box } from '@mui/material';
 
 const Feature = () => {
   return (

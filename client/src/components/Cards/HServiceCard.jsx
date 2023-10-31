@@ -10,17 +10,21 @@ import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
 import star from "/src/assets/hservices/star.png";
 import StarIcon from '@mui/icons-material/Star';
+import {Link} from 'react-router-dom';
 
 
 const HServiceCard = ({ item }) => {
+
   return (
+
+    <Link to="/services/123">
     <Card sx={{ 
       maxWidth: 300,
       border: 3,
       borderColor: "primary.main",
       boxShadow: 5,
       m:1, 
-      }}
+    }}
     >
       <CardMedia
         component="img"
@@ -55,6 +59,7 @@ const HServiceCard = ({ item }) => {
         </IconButton>
       </CardActions>
     </Card>
+    </Link>
   )
 }
 

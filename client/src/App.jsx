@@ -6,6 +6,10 @@ import Home from './pages/Home/Home';
 import Footer from './components/Nav/Footer';
 import HServiceCard from './components/Cards/HServiceCard';
 import HServices from './pages/HServices/HServices';
+import HService from './pages/HServices/HService';
+import Single_Message from './pages/Messages/Single_Message';
+import Messages from './pages/Messages/Messages';
+import MyHServices from './pages/Pro/MyHServices';
 
 
 function App() {
@@ -36,6 +40,22 @@ function App() {
         {
           path: "/services",
           element: <HServices />,
+        },
+        {
+          path: "/services/:id",
+          element: <HService />,
+        },
+        {
+          path: "/messages",
+          element: <Messages />,
+        },
+        {
+          path: "/message/:id",
+          element: <Single_Message />,
+        },
+        {
+          path: "/myServices",
+          element: <MyHServices />,
         },
       ]
     }

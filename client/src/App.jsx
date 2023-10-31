@@ -4,6 +4,8 @@ import Navbar from './components/Nav/Navbar';
 import "./App.scss";
 import Home from './pages/Home/Home';
 import Footer from './components/Nav/Footer';
+import HServiceCard from './components/Cards/HServiceCard';
+import HServices from './pages/HServices/HServices';
 
 
 function App() {
@@ -31,7 +33,10 @@ function App() {
           path: "/home",
           element: <Home />,
         },
-
+        {
+          path: "/services",
+          element: <HServices />,
+        },
       ]
     }
   ])

@@ -9,30 +9,35 @@ import { Link } from 'react-router-dom'
 const CategoryCards = ({item}) => {
   return (
     <Card sx={{ 
-      border: 2,
+      border: 3,
       borderColor: "primary.main",
-      boxShadow: 3,
-      p:1.5, 
+      boxShadow: 5,
       m:1, 
       maxWidth: 240
       }}
     >
       <Link to="/services?cat=design">
-        <CardMedia
-          sx={{ height: 200 }}
-          image={item.img}
-          title={item.title}
-        />
+        <div style={{ position: "relative" }}>
+          <CardMedia
+            sx={{ height: 300 }}
+            image={item.img}
+            title={item.title}
+          />
 
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-          {item.title}
-          </Typography>
-        </CardContent>
-
-        <CardActions>
-          <Button size="small">Learn More</Button>
-        </CardActions>
+          <CardContent 
+            style={{
+              position: "absolute", 
+              color: "white", 
+              top: 203, 
+              left: "33%", 
+              transform: "translateX(-50%)",}}
+          >
+            <Typography gutterBottom variant="h5" component="div">
+            {item.title}
+            </Typography>
+            <Button size="small">Learn More</Button>
+          </CardContent>
+        </div>
       </Link>
     </Card>
   )

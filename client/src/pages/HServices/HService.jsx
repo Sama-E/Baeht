@@ -1,4 +1,4 @@
-import { Stack, Box, styled, Typography, Container } from '@mui/material';
+import { Stack, Box, styled, Typography, Container, Grid } from '@mui/material';
 import Paper from '@mui/material/Paper';
 import CardHeader from '@mui/material/CardHeader';
 import Avatar from '@mui/material/Avatar';
@@ -9,6 +9,9 @@ import ImageSlider from '../../components/HServices/ImageSlider';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import CustomButton from "/src/components/Custom/CustomButton";
+import CustomBreadcrumbs from './../../components/Custom/CustomBreadcrumbs';
+import CustomUserInfo from '../../components/Custom/CustomUserInfo';
+import SmallCustomButton from '../../components/Custom/CustomSmallButton';
 
 const HService = () => {
   const CustomBox = styled(Box)(({ theme }) => ({
@@ -35,64 +38,9 @@ const HService = () => {
   return (
     <Box sx={{ backgroundColor: "white", minHeight: "80vh" }}>
       <Container>
+        <CustomBreadcrumbs />
         <CustomBox>
-          <Box sx={{ flex: "2" }}>
-            <Stack spacing={2}>
-              <Item>
-                <Typography variant="h4" gutterBottom>
-                  Title
-                </Typography>
-              </Item>
-              <Item>
-                <Avatar 
-                  sx={{ bgcolor: "red" }} 
-                  alt="Pro"
-                  src="https://images.pexels.com/photos/580151/pexels-photo-580151.jpeg?auto=compress&cs=tinysrgb&w=1600"
-                />
-                John Green
-                <IconButton size="small" color="#E3D026">
-                  <img src={star} width="15" height="15" />
-                  <img src={star} width="15" height="15" />
-                  <img src={star} width="15" height="15" />
-                  <img src={star} width="15" height="15" />
-                  <img src={star} width="15" height="15" />
-                </IconButton>
-              </Item>
-              <Item>
-                <ImageSlider />
-              </Item>
-              <Item>
-                <Typography variant="h6" gutterBottom>About Service</Typography>
-                <p>Something</p>
-              </Item>
-              <Item>
-                <Stack>
-                  <Item> 
-                    <Typography variant="h6" gutterBottom>About Seller</Typography>
-                    <Item>Avatar Profile</Item>
-                    <Item>
-                      Service Profile
-                    </Item>
-                  </Item>
-                </Stack>
-              </Item>
-              <Item>
-                <Stack>
-                    <Typography>Reviews</Typography>
-                  <Item>
-                    <Item>Avatar Profile</Item>
-                    <Item>Stars</Item>
-                    <Item>
-                      Review 1
-                    </Item>
-                  </Item>
-                </Stack>
-              </Item>
-            </Stack>
-          </Box>
-
-
-          <Box sx={{ flex: "1" }}>
+        <Box sx={{ flex: "1" }}>
             <Item>
               <Box>
                 <Typography variant="h6" gutterBottom>
@@ -105,13 +53,13 @@ const HService = () => {
                 <Box> 2 days to delivery</Box>
                 <List sx={{ width:'100%', maxWidth: 360, bgcolor: 'background.paper' }}>
                   <ListItem>
-                    Photo
+                    Service 1
                   </ListItem>
                   <ListItem>
-                    Photo
+                    Service 2
                   </ListItem>
                   <ListItem>
-                    Photo
+                    Service 3
                   </ListItem>
                 </List>
                 <Box sx={{display:"flex", justifyContent:"center", alignItems:"center"}}>
@@ -123,6 +71,78 @@ const HService = () => {
                 </Box>
               </Box>
             </Item>
+          </Box>
+          
+          <Box sx={{ flex: "2" }}>
+            <Stack spacing={2}>
+              <Item>
+                <Typography variant="h5" gutterBottom>
+                  Title
+                </Typography>
+              </Item>
+                <CustomUserInfo />
+              <Item>
+                <ImageSlider />
+              </Item>
+              <Item>
+                <Typography variant="h6" gutterBottom>About Service</Typography>
+                <p>Something</p>
+              </Item>
+              <Item>
+                <Stack>
+                  <Item> 
+                    <Typography variant="h6" gutterBottom>About Seller</Typography>
+                    <Stack spacing={{ xs: 1, sm: 2 }} direction="row" useFlexGap flexWrap="wrap">
+                    <CustomUserInfo />
+                    <SmallCustomButton
+                      backgroundColor="#849EB9"
+                      color="#fff"
+                      buttonText="Contact Me"
+                    />
+                    </Stack>
+                    <Grid container spacing={2} mt={2}>
+                      <Grid item xs={6}>
+                        <Typography variant="subtitle2" gutterBottom>Average Response Time</Typography>
+                        <Typography variant="body2" gutterBottom>4 Hours</Typography>
+                        <Typography variant="subtitle2" gutterBottom>Language</Typography>
+                        <Typography variant="body2" gutterBottom>English, Spanish</Typography>
+                      </Grid>
+                      <Grid item xs={6}>
+                        <Typography variant="subtitle2" gutterBottom>Member since</Typography>
+                        <Typography variant="body2" gutterBottom>Aug 2022</Typography>
+                        <Typography variant="subtitle2" gutterBottom>Certified</Typography>
+                        <Typography variant="body2" gutterBottom>City, State</Typography>
+                      </Grid>
+                    </Grid>
+                  </Item>
+                </Stack>
+              </Item>
+              <Item>
+                <Stack>
+                    <Typography>Reviews</Typography>
+                  <Item>
+                  <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start' }} spacing={{ xs: 1, sm: 2 }}>
+                    <Avatar 
+                      sx={{ height: '45px', width: '45px', mr:2}} 
+                      alt="Pro"
+                      src="https://images.pexels.com/photos/580151/pexels-photo-580151.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                    />
+                    <Typography sx={{ fontSize: 12 }}>John Green</Typography>
+                  </Box>
+                  <Box sx={{justifyContent: 'flex-start' }} m={1}>  
+                    <img src={star} width="15" height="15" />
+                    <img src={star} width="15" height="15" />
+                    <img src={star} width="15" height="15" />
+                    <img src={star} width="15" height="15" />
+                    <img src={star} width="15" height="15" />
+                  </Box>
+                    <Item>
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis maiores aut officia ea, sunt excepturi pariatur commodi nostrum, consectetur ratione maxime nulla vel ducimus ipsum, asperiores atque sequi quos quas.
+                    </Item>
+                  </Item>
+                </Stack>
+              </Item>
+            </Stack>
           </Box>
         </CustomBox>
       </Container>

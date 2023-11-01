@@ -10,6 +10,9 @@ import HService from './pages/HServices/HService';
 import Single_Message from './pages/Messages/Single_Message';
 import Messages from './pages/Messages/Messages';
 import MyHServices from './pages/Pro/MyHServices';
+import Orders from './pages/Orders/Orders';
+import Register from './pages/Auth/Register';
+import Login from './pages/Auth/Login';
 
 
 function App() {
@@ -50,15 +53,27 @@ function App() {
           element: <Messages />,
         },
         {
-          path: "/message/:id",
+          path: "/messages/:id",
           element: <Single_Message />,
+        },
+        {
+          path: "/orders",
+          element: <Orders />,
         },
         {
           path: "/myServices",
           element: <MyHServices />,
         },
-      ]
-    }
+      ],
+    },
+    {
+      path: "/register",
+      element: <Register />,
+    },
+    {
+      path: "/login",
+      element: <Login />,
+    },
   ])
 
   return <RouterProvider router={router} />;

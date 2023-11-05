@@ -23,7 +23,7 @@ const StyledToolbar = styled(Toolbar)({
 });
 
 const Search = styled("div")(({ theme }) => ({
-  backgroundColor: "#FAFCFD",
+  // backgroundColor: "#FAFCFD",
   padding: "0 10px",
   width: "30%",
 	underline: "always",
@@ -58,26 +58,32 @@ const currentUser ={
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   return (
-    <AppBar position="sticky">
-      <Box sx={{ 
-        border: 3, 
-        borderColor: 'primary.main', 
-        borderRadius: 1,
+    <AppBar 
+      position="sticky"
+    >
+      <Box sx={{  
+        border: 3,  
         boxShadow: 3,
-        margin: "1px"
+        margin: "1px",
+        display: "flex",
+        justifyContent : "space-between",
+        alignItems: "center",
+        height:"55px",
+        backgroundColor: "#FAFCFD",
+        padding: "7px 18px"
         }}
       >
-      <StyledToolbar>
-        <Typography variant="h6" sx={{ display: { xs: "none", sm: "block" } }}>
+      {/* <StyledToolbar> */}
+        <Typography variant="h5" sx={{ display: { xs: "none", sm: "block" } }}>
           .Baeht.
         </Typography>
         <HouseIcon  sx={{ display: { xs: "block", sm: "none" } }} />
-        <Search sx={{ display: { xs: "none", sm: "block" } }}>
+        {/* <Search sx={{ display: { xs: "none", sm: "block" } }}>
           <InputBase placeholder="search for a service ..." />
         </Search>
         <Search sx={{ display: { xs: "block", sm: "none" } }}>
           <InputBase placeholder="search ..." />
-        </Search>
+        </Search> */}
         <Icons>
           {/* <Badge badgeContent={4} color="error">
             <Mail />
@@ -95,7 +101,7 @@ const Navbar = () => {
           }
           {currentUser && (
             <Avatar
-              sx={{ width: 30, height: 30 }}
+              sx={{ width: 40, height: 40 }}
               src= {currentUser?.img}
               onClick={(e) => setOpen(true)}
             />
@@ -111,7 +117,7 @@ const Navbar = () => {
             <Typography variant="span">{currentUser?.username}</Typography>
           </UserBox>
         )}
-      </StyledToolbar>
+      {/* </StyledToolbar> */}
       
       {/* Current User is not Seller Menu */}
       {currentUser && (

@@ -13,16 +13,16 @@ import HouseIcon from '@mui/icons-material/House';
 const StyledToolbar = styled(Toolbar)({
   display: "flex",
   justifyContent: "space-between",
-	backgroundColor: "#FAFCFD"
+	backgroundColor: "white"
 });
 
 
 const Footer = () => {
   return (
-    <AppBar position="sticky">
+    <AppBar position="sticky" style={{backgroundColor: 'black'}}>
       <Box sx={{ 
-        border: 3, 
-        borderColor: 'primary.main', 
+        border: 2, 
+        borderColor: 'dark.main', 
         borderRadius: 1,
         boxShadow: 3,
         margin: "1px"

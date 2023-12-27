@@ -6,6 +6,8 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import DeleteIcon from '/src/assets/hservices/delete.png'
+import {Link} from "react-router-dom";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -61,7 +63,16 @@ const MyHServices = () => {
               <StyledTableCell align="right">{row.image}</StyledTableCell>
               <StyledTableCell align="right">{row.price}</StyledTableCell>
               <StyledTableCell align="right">{row.order}</StyledTableCell>
-              <StyledTableCell align="right">{row.action}</StyledTableCell>
+              <StyledTableCell align="right">
+                <Link to="/home">
+                  <img 
+                    src={DeleteIcon} 
+                    alt="delete"
+                    height="20px"
+                    width="20px"
+                  />
+                </Link>
+              </StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>

@@ -44,6 +44,13 @@ const rows = [
 ];
 
 const MyHServices = () => {
+
+  const currentUser = {
+    id: 1,
+    username: "Anna",
+    isSeller: true,
+  };
+
   return (
     <div className="myServices">
       <Box sx={{
@@ -51,22 +58,18 @@ const MyHServices = () => {
         flexDirection: 'row', 
         justifyContent: 'space-between' 
       }}>
-        {/* <h1>{currentUser.isSeller ? "Gigs" : "Orders"}</h1>
-          {currentUser.isSeller && (
-            <Link to="/add">
-            <button>Add New Gig</button>
-            </Link>
-          )} */}
-        <h1>My Services</h1>
+        <h1>{currentUser.isSeller ? "Services" : "Orders"}</h1>
+        {currentUser.isSeller && (
         <Box sx={{ display: 'flex', alignItems: 'center'}}>
           <CustomButton
             backgroundColor="#849EB9"
             color="#fff"
             buttonText="Add New Service"
             heroBtn={true}
-            href ="/home"
+            href ="/add"
           />
         </Box>
+        )} 
       </Box>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 700 }} aria-label="customized table">
@@ -93,8 +96,8 @@ const MyHServices = () => {
                     <img 
                       src={DeleteIcon} 
                       alt="delete"
-                      height="20px"
-                      width="20px"
+                      height="22px"
+                      width="22px"
                     />
                   </Link>
                 </StyledTableCell>

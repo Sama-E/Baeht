@@ -13,6 +13,7 @@ import MyHServices from './pages/Pro/MyHServices';
 import Orders from './pages/Orders/Orders';
 import Register from './pages/Auth/Register';
 import Login from './pages/Auth/Login';
+import AddHServices from './pages/Pro/AddHServices';
 
 
 function App() {
@@ -63,6 +64,10 @@ function App() {
         {
           path: "/myServices",
           element: <MyHServices />,
+        },
+        {
+          path: "/addService",
+          element: <AddHServices />,
         },
       ],
     },

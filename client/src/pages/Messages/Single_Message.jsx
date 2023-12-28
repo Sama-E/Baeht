@@ -59,12 +59,12 @@ const Single_Message = () => {
               onChange={handleInputChange}
             />
           </Grid>
-          <Grid item xs={2}>
+          <Grid item xs={2} >
             <Button
               fullWidth
               color="primary"
               variant="contained"
-              endIcon={<SendIcon />}
+              // endIcon={<SendIcon />}
               onClick={handleSend}
             >
               Send

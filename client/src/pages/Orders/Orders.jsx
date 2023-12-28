@@ -43,6 +43,13 @@ const rows = [
 ];
 
 const Orders = () => {
+
+  const currentUser = {
+    id: 1,
+    username: "Anna",
+    isSeller: true,
+  };
+
   return (
     <div className="myOrders">
       <Box sx={{
@@ -50,22 +57,7 @@ const Orders = () => {
         flexDirection: 'row', 
         justifyContent: 'space-between' 
       }}>
-        {/* <h1>{currentUser.isSeller ? "Gigs" : "Orders"}</h1>
-          {currentUser.isSeller && (
-            <Link to="/add">
-            <button>Add New Gig</button>
-            </Link>
-          )} */}
         <h1>My Orders</h1>
-        {/* <Box sx={{ display: 'flex', alignItems: 'center'}}>
-          <CustomButton
-            backgroundColor="#849EB9"
-            color="#fff"
-            buttonText="Add New Order"
-            heroBtn={true}
-            href ="/home"
-          />
-        </Box> */}
       </Box>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 700 }} aria-label="customized table">
@@ -74,7 +66,7 @@ const Orders = () => {
               <StyledTableCell>Title</StyledTableCell>
               <StyledTableCell align="right">Title</StyledTableCell>
               <StyledTableCell align="right">Price</StyledTableCell>
-              <StyledTableCell align="right">Buyer</StyledTableCell>
+              <StyledTableCell align="right">{currentUser.isSeller ? "Buyer" : "Seller"}</StyledTableCell>
               <StyledTableCell align="center">Actions</StyledTableCell>
             </TableRow>
           </TableHead>
@@ -92,8 +84,8 @@ const Orders = () => {
                     <img 
                       src={MessageIcon} 
                       alt="delete"
-                      height="20px"
-                      width="20px"
+                      height="28px"
+                      width="28px"
                       align="center"
                     />
                   </Link>

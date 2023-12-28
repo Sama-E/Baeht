@@ -8,6 +8,8 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import DeleteIcon from '/src/assets/hservices/delete.png'
 import {Link} from "react-router-dom";
+import CustomButton from '../../components/Custom/CustomButton';
+import { Box } from '@mui/material';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -43,41 +45,65 @@ const rows = [
 
 const MyHServices = () => {
   return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 700 }} aria-label="customized table">
-        <TableHead>
-          <TableRow>
-            <StyledTableCell>Title</StyledTableCell>
-            <StyledTableCell align="right">Image</StyledTableCell>
-            <StyledTableCell align="right">Price</StyledTableCell>
-            <StyledTableCell align="right">Order</StyledTableCell>
-            <StyledTableCell align="right">Actions</StyledTableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <StyledTableRow key={row.title}>
-              <StyledTableCell component="th" scope="row">
-                {row.title}
-              </StyledTableCell>
-              <StyledTableCell align="right">{row.image}</StyledTableCell>
-              <StyledTableCell align="right">{row.price}</StyledTableCell>
-              <StyledTableCell align="right">{row.order}</StyledTableCell>
-              <StyledTableCell align="right">
-                <Link to="/home">
-                  <img 
-                    src={DeleteIcon} 
-                    alt="delete"
-                    height="20px"
-                    width="20px"
-                  />
-                </Link>
-              </StyledTableCell>
-            </StyledTableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+    <div className="myServices">
+      <Box sx={{
+        display: 'flex', 
+        flexDirection: 'row', 
+        justifyContent: 'space-between' 
+      }}>
+        {/* <h1>{currentUser.isSeller ? "Gigs" : "Orders"}</h1>
+          {currentUser.isSeller && (
+            <Link to="/add">
+            <button>Add New Gig</button>
+            </Link>
+          )} */}
+        <h1>My Services</h1>
+        <Box sx={{ display: 'flex', alignItems: 'center'}}>
+          <CustomButton
+            backgroundColor="#849EB9"
+            color="#fff"
+            buttonText="Add New Service"
+            heroBtn={true}
+            href ="/home"
+          />
+        </Box>
+      </Box>
+      <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 700 }} aria-label="customized table">
+          <TableHead>
+            <TableRow>
+              <StyledTableCell>Title</StyledTableCell>
+              <StyledTableCell align="right">Image</StyledTableCell>
+              <StyledTableCell align="right">Price</StyledTableCell>
+              <StyledTableCell align="right">Sales</StyledTableCell>
+              <StyledTableCell align="center">Actions</StyledTableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {rows.map((row) => (
+              <StyledTableRow key={row.title}>
+                <StyledTableCell component="th" scope="row">
+                  {row.title}
+                </StyledTableCell>
+                <StyledTableCell align="right">{row.image}</StyledTableCell>
+                <StyledTableCell align="right">{row.price}</StyledTableCell>
+                <StyledTableCell align="right">{row.order}</StyledTableCell>
+                <StyledTableCell align="center">
+                  <Link to="/home">
+                    <img 
+                      src={DeleteIcon} 
+                      alt="delete"
+                      height="20px"
+                      width="20px"
+                    />
+                  </Link>
+                </StyledTableCell>
+              </StyledTableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </div>
   )
 }
 

@@ -1,28 +1,52 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import IconButton from '@mui/material/IconButton';
-import Input from '@mui/material/Input';
-import FilledInput from '@mui/material/FilledInput';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import InputLabel from '@mui/material/InputLabel';
-import InputAdornment from '@mui/material/InputAdornment';
-import FormHelperText from '@mui/material/FormHelperText';
-import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import { Stack, Typography, styled, Button } from '@mui/material';
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+
+const VisuallyHiddenInput = styled('input')({
+  clip: 'rect(0 0 0 0)',
+  clipPath: 'inset(50%)',
+  height: 1,
+  overflow: 'hidden',
+  position: 'absolute',
+  bottom: 0,
+  left: 0,
+  whiteSpace: 'nowrap',
+  width: 1,
+});
 
 const AddHServices = () => {
-  
-  const [showPassword, setShowPassword] = React.useState(false);
 
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
-
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
+  const catgories = [
+    {
+      value: 'Plumbering',
+      label: 'Plumbering',
+    },
+    {
+      value: 'Electrician',
+      label: 'Electrician',
+    },
+    {
+      value: 'Roofer',
+      label: 'Roofer',
+    },
+    {
+      value: 'Landscaper',
+      label: 'Landscaper',
+    },
+    {
+      value: 'Designer',
+      label: 'Designer',
+    },
+    {
+      value: 'Painter',
+      label: 'Painter',
+    },
+  ];
 
   return (
+    
     <div>
       <Box sx={{
         display: 'flex', 
@@ -31,54 +55,160 @@ const AddHServices = () => {
       }}>
         <h1>Add New Service</h1>
       </Box>
-      <Box>
+      <Box
+        component="form"
+        sx={{
+          '& .MuiTextField-root': { width: '40ch' },
+        }}
+        display= "flex"
+        noValidate
+        autoComplete="off"
+      >
+        <Box sx={{ flex: "1" }}>
+          <Stack spacing={3}>
 
-        <TextField
-          label="With normal TextField"
-          id="standard-start-adornment"
-          sx={{ m: 1, width: '25ch' }}
-          InputProps={{
-            startAdornment: <InputAdornment position="start">kg</InputAdornment>,
-          }}
-          variant="standard"
-        />
-        <FormControl variant="standard" sx={{ m: 1, mt: 3, width: '25ch' }}>
-          <Input
-            id="standard-adornment-weight"
-            endAdornment={<InputAdornment position="end">kg</InputAdornment>}
-            aria-describedby="standard-weight-helper-text"
-            inputProps={{
-              'aria-label': 'weight',
-            }}
-          />
-          <FormHelperText id="standard-weight-helper-text">Weight</FormHelperText>
-        </FormControl>
-        <FormControl sx={{ m: 1, width: '25ch' }} variant="standard">
-          <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
-          <Input
-            id="standard-adornment-password"
-            type={showPassword ? 'text' : 'password'}
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={handleClickShowPassword}
-                  onMouseDown={handleMouseDownPassword}
-                >
-                  {showPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            }
-          />
-        </FormControl>
-        <FormControl fullWidth sx={{ m: 1 }} variant="standard">
-          <InputLabel htmlFor="standard-adornment-amount">Amount</InputLabel>
-          <Input
-            id="standard-adornment-amount"
-            startAdornment={<InputAdornment position="start">$</InputAdornment>}
-          />
-        </FormControl>
+            <Box component="section">
+              <Typography variant="subtitle1" gutterBottom>
+                Title
+              </Typography>
+              <TextField
+                sx={{ width: '40ch' }}
+                variant="standard"
+              />
+            </Box>
 
+            <Box component="section">
+              <Typography variant="subtitle1" gutterBottom>
+                Category
+              </Typography>
+              <TextField
+                select
+                SelectProps={{
+                  native: true,
+                }}
+                helperText="Please select a category"
+                variant="standard"
+              >
+                {catgories.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </TextField>
+            </Box>
+
+            <Box component="section">
+              <Typography variant="subtitle1" gutterBottom>
+                Cover Image
+              </Typography>
+              <Button component="label" variant="outline" startIcon={<CloudUploadIcon />}>
+                Upload file
+                <VisuallyHiddenInput type="file" />
+              </Button>
+            </Box>
+
+            <Box component="section">
+              <Typography variant="subtitle1" gutterBottom>
+                Upload Images
+              </Typography>
+              <Button component="label" variant="outline" startIcon={<CloudUploadIcon />}>
+                Upload file
+                <VisuallyHiddenInput type="file" multiple />
+              </Button>
+            </Box>
+
+            <Box component="section">
+              <Typography variant="subtitle1" gutterBottom>
+                Description
+              </Typography>
+              <TextField
+                multiline
+                rows={6}
+                placeholder="Brief description to introduce your service to customers"
+                variant="standard"
+              />
+            </Box>
+
+          </Stack>
+        </Box>
+        <Box sx={{ flex: "1", pl: 2 }}>
+          <Stack spacing={3}>
+
+            <Box component="section">
+              <Typography variant="subtitle1" gutterBottom>
+                Service Title
+              </Typography>
+              <TextField
+                sx={{ width: '40ch' }}
+                variant="standard"
+              />
+            </Box>
+
+            <Box component="section">
+              <Typography variant="subtitle1" gutterBottom>
+                Price
+              </Typography>
+              <TextField
+                sx={{ display: 'block', p: 0.1  }}
+                variant="standard"
+              />
+            </Box>
+
+            <Box component="section">
+              <Typography variant="subtitle1" gutterBottom>
+                Short Description
+              </Typography>
+              <TextField
+                multiline
+                rows={6}
+                placeholder="Short description of your service."
+                variant="standard"
+              />
+            </Box>
+
+            <Box component="section">
+              <Typography variant="subtitle1" gutterBottom>
+                Delivery Time (e.g. 3 days)
+              </Typography>
+              <TextField
+                sx={{ width: '40ch' }}
+                variant="standard"
+              />
+            </Box>
+
+            <Box component="section">
+              <Typography variant="subtitle1" gutterBottom>
+                Revision Number
+              </Typography>
+              <TextField
+                sx={{ width: '40ch' }}
+                variant="standard"
+              />
+            </Box>
+
+            <Box component="section">
+              <Typography variant="subtitle1" gutterBottom>
+                Add Features
+              </Typography>
+              <TextField
+                sx={{ display: 'block', p: 1 }}
+                variant="standard"
+                placeholder="Item 1"
+              />
+              <TextField
+                sx={{ display: 'block', p: 1  }}
+                variant="standard"
+                placeholder="Item 2"
+              />
+              <TextField
+                sx={{ display: 'block', p: 1  }}
+                variant="standard"
+                placeholder="Item 3"
+              />
+            </Box>
+
+          </Stack>
+        </Box>
       </Box>
     </div>
   )

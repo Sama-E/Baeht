@@ -1,21 +1,32 @@
+import React, { useState } from "react";
+import newRequest from "../../utils/newRequest";
+import { useNavigate } from "react-router-dom";
+
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
-import Link from "@mui/material/Link";
-import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
+// import FormControlLabel from "@mui/material/FormControlLabel";
+// import Checkbox from "@mui/material/Checkbox";
+// import Link from "@mui/material/Link";
+// import Grid from "@mui/material/Grid";
 
 const Login = () => {
-  const handleSubmit = (event) => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+    try {
+      const res = await newRequest.post("/auth/login", { username, password });
+      localStorage.setItem("currentUser", JSON.stringify(res.data));
+      navigate("/")
+    } catch (err) {
+      setError(err.response.data);
+    }
   };
 
   return (
@@ -36,11 +47,12 @@ const Login = () => {
             margin="normal"
             required
             fullWidth
-            id="email"
-            label="Email Address"
-            name="email"
-            autoComplete="email"
+            id="username"
+            label="Username"
+            name="text"
+            autoComplete="username"
             autoFocus
+            onChange={(e) => setUsername(e.target.value)}
           />
           <TextField
             margin="normal"
@@ -51,6 +63,7 @@ const Login = () => {
             type="password"
             id="password"
             autoComplete="current-password"
+            onChange={(e) => setPassword(e.target.value)}
           />
           {/* <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
@@ -77,6 +90,7 @@ const Login = () => {
             </Grid>
           </Grid> */}
         </Box>
+        {error && error}
       </Box>
     </Container>
   )

@@ -3,6 +3,7 @@ import Review from "../models/review.model.js";
 import HService from "../models/hservice.model.js";
 
 
+// Create Review
 export const createReview = async (req, res, next) => {
   if (req.isSeller)
     return next(createError(403, "Sellers can't create a review!"));
@@ -38,6 +39,7 @@ export const createReview = async (req, res, next) => {
   }
 };
 
+// Get Reviews
 export const getReviews = async (req, res, next) => {
   try {
     const reviews = await Review.find({ hServiceId: req.params.hServiceId });
@@ -46,6 +48,8 @@ export const getReviews = async (req, res, next) => {
     next(err);
   }
 };
+
+// Delete Review
 export const deleteReview = async (req, res, next) => {
   try {
   } catch (err) {

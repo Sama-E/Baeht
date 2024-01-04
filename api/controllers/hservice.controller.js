@@ -1,6 +1,7 @@
 import createError from "../utils/createError.js";
 import HService from "../models/hservice.model.js";
 
+// Create Home Service
 export const createHService = async (req, res, next) => {
   if (!req.isSeller)
     return next(createError(403, "Only sellers can create a service!"));
@@ -17,6 +18,8 @@ export const createHService = async (req, res, next) => {
     next(err);
   }
 };
+
+// Delete Home Service
 export const deleteHService = async (req, res, next) => {
   try {
     const hService = await HService.findById(req.params.id);
@@ -29,6 +32,8 @@ export const deleteHService = async (req, res, next) => {
     next(err);
   }
 };
+
+// Get Home Service
 export const getHService = async (req, res, next) => {
   try {
     const hService = await HService.findById(req.params.id);
@@ -38,6 +43,8 @@ export const getHService = async (req, res, next) => {
     next(err);
   }
 };
+
+// Get Home Services
 export const getHServices = async (req, res, next) => {
   const q = req.query;
   const filters = {

@@ -14,7 +14,12 @@ export const theme = createTheme({
         dark:{
             main: "#000000",
             light: "#FFFFFF"
+        },
+        ochre:{
+            main: '#E3D026',
+            light: '#E9DB5D',
         }
+
     },
 
 })

@@ -2,7 +2,12 @@ import mongoose from "mongoose";
 const { Schema } = mongoose;
 
 const userSchema = new Schema({
-  username: {
+  firstName: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  lastName: {
     type: String,
     required: true,
     unique: true,
@@ -22,7 +27,7 @@ const userSchema = new Schema({
   },
   address: {
     type: String,
-    required: true,
+    required: false,
   },
   city: {
     type: String,
@@ -37,6 +42,10 @@ const userSchema = new Schema({
     required: true,
   },
   phone: {
+    type: String,
+    required: false,
+  },
+  company: {
     type: String,
     required: false,
   },

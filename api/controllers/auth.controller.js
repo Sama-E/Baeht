@@ -19,10 +19,10 @@ export const register = async (req, res, next) => {
   }
 };
 
-// Login
+// Login - via email
 export const login = async (req, res, next) => {
   try {
-    const user = await User.findOne({ username: req.body.username });
+    const user = await User.findOne({ email: req.body.email });
 
     if (!user) return next(createError(404, "User not found!"));
 

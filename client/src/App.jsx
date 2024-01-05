@@ -14,6 +14,7 @@ import Orders from './pages/Orders/Orders';
 import Register from './pages/Auth/Register';
 import Login from './pages/Auth/Login';
 import AddHServices from './pages/Pro/AddHServices';
+import WelcomeNav from './components/Nav/WelcomeNav';
 
 
 function App() {
@@ -32,15 +33,25 @@ function App() {
     )
   }
 
+  const Layout2 = () => {
+    return (
+      <Container bgcolor={"background.default"} color={"text.primary"}>
+        <Stack spacing={2}>
+          <WelcomeNav />
+          <Grid rowSpacing={1} columnSpacing={{ xs: 1, md: 3 }}>
+            <Outlet />
+          </Grid>
+          <Footer />
+        </Stack>
+      </Container>
+    )
+  }
+
   const router = createBrowserRouter([
     {
       path: "/",
       element: <Layout />,
       children: [
-        {
-          path: "/home",
-          element: <Home />,
-        },
         {
           path: "/services",
           element: <HServices />,
@@ -71,15 +82,24 @@ function App() {
         },
       ],
     },
-    {
-      path: "/register",
-      element: <Register />,
-    },
-    {
-      path: "/login",
-      element: <Login />,
-    },
-  ])
+    {path: "/",
+    element: <Layout2 />,
+    children: [
+      {
+        path: "/home",
+        element: <Home />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+    ]
+  }
+])
 
   return <RouterProvider router={router} />;
 }

@@ -51,7 +51,7 @@ const Register = () => {
     company: "",
     desc: "",
   });
-
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -72,11 +72,12 @@ const Register = () => {
     try {
       await newRequest.post("/auth/register", {
         ...user,
-        img: url,
+        // img: url,
       });
       navigate("/")
     } catch (err) {
       console.log(err);
+      setError(err.response.data);
     }
   };
 
@@ -244,7 +245,7 @@ const Register = () => {
           <AccordionDetails>
             <Typography>
               <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
+              control={<Checkbox value="remember" color="primary" onChange={handleSeller} />}
               label="Activate Seller Account"
               />
             </Typography>
@@ -293,6 +294,11 @@ const Register = () => {
           </Grid>
         </Grid>
       </Box>
+      {/* <Box sx={{ p: 2 }}>
+        <Typography component="h6" color="red">
+          {error && error}
+        </Typography>
+      </Box> */}
     </Box>
   </Container>
   )

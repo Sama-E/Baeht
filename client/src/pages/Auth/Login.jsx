@@ -13,7 +13,7 @@ import Link from "@mui/material/Link";
 // import Checkbox from "@mui/material/Checkbox";
 
 const Login = () => {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const navigate = useNavigate();
@@ -21,7 +21,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await newRequest.post("/auth/login", { username, password });
+      const res = await newRequest.post("/auth/login", { email, password });
       localStorage.setItem("currentUser", JSON.stringify(res.data));
       navigate("/")
     } catch (err) {
@@ -47,12 +47,12 @@ const Login = () => {
             margin="normal"
             required
             fullWidth
-            id="username"
-            label="Username"
-            name="text"
-            autoComplete="username"
+            id="email"
+            label="Email"
+            name="email"
+            autoComplete="email"
             autoFocus
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <TextField
             margin="normal"
@@ -90,7 +90,11 @@ const Login = () => {
             </Grid>
           </Grid>
         </Box>
-        {error && error}
+        <Box sx={{ p: 2 }}>
+          <Typography component="h6" color="red">
+            {error && error}
+          </Typography>
+        </Box>
       </Box>
     </Container>
   )

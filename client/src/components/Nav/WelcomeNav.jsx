@@ -35,16 +35,18 @@ const WelcomeNav = () => {
         }}
       >
       {/* <StyledToolbar> */}
-        <Typography variant="h5" sx={{ display: { xs: "none", sm: "block" } }}>
+      <Box>
+        <Typography variant="h5" sx={{ display: { xs: "block", sm: "block" } }}>
           .Baeht.
         </Typography>
-        <HouseIcon  sx={{ display: { xs: "block", sm: "none" } }} />
-        <Icons>
-          <>
-            <Button variant="outlined" color="dark">Sign In</Button>
-            <Button variant="outlined" color="dark">Join</Button>
-          </>
+        {/* <HouseIcon  sx={{ display: { xs: "block", sm: "none" } }} /> */}
+      </Box>
+      <Box>
+        <Icons sx={{ display: { xs: "block", sm: "block" } }}>
+            <Button variant="outlined" color="dark" size="small" >Sign In</Button>
+            <Button variant="outlined" color="dark" size="small" sx={{ marginLeft: '20px' }} >Join</Button>
         </Icons>
+      </Box>
       </Box>
     </AppBar>
   )

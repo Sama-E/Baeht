@@ -37,12 +37,12 @@ app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 
 // ERRORS
-// app.use((err, req, res, next) => {
-//   const errorStatus = err.status || 500;
-//   const errorMessage = err.message || "Something went wrong!";
+app.use((err, req, res, next) => {
+  const errorStatus = err.status || 500;
+  const errorMessage = err.message || "Something went wrong!";
 
-//   return res.status(errorStatus).send(errorMessage);
-// });
+  return res.status(errorStatus).send(errorMessage);
+});
 
 // API
 app.listen(8800, () => {

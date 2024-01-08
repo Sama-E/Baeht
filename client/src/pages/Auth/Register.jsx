@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import upload from "../../utils/upload";
+import upload from "../../utils/upload";
 import newRequest from "../../utils/newRequest";
 import { useNavigate } from "react-router-dom";
 
@@ -68,11 +68,11 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // const url = await upload(file);
+    const url = await upload(file);
     try {
       await newRequest.post("/auth/register", {
         ...user,
-        // img: url,
+        img: url,
       });
       navigate("/")
     } catch (err) {
@@ -178,8 +178,8 @@ const Register = () => {
           <Grid item xs={12}>
             <Button component="label" variant="contained" startIcon={<CloudUploadIcon />}>
               Upload Profile Picture
-              <VisuallyHiddenInput type="file" />
-              {/* <VisuallyHiddenInput type="file" onChange={(e) => setFile(e.target.files[0])}/> */}
+              {/* <VisuallyHiddenInput type="file" /> */}
+              <VisuallyHiddenInput type="file" onChange={(e) => setFile(e.target.files[0])}/>
             </Button>
           </Grid>
           <Grid item xs={12}>

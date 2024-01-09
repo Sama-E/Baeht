@@ -13,27 +13,28 @@ import CustomBreadcrumbs from './../../components/Custom/CustomBreadcrumbs';
 import CustomUserInfo from '../../components/Custom/CustomUserInfo';
 import SmallCustomButton from '../../components/Custom/CustomSmallButton';
 
-const HService = () => {
-  const CustomBox = styled(Box)(({ theme }) => ({
-    display: "flex",
-    justifyContent: "center",
-    gap: theme.spacing(6),
-    marginTop: theme.spacing(2),
-    [theme.breakpoints.down("md")]: {
-      flexDirection: "column",
-      alignItems: "center",
-      textAlign: "center",
-    },
-  }));
+const CustomBox = styled(Box)(({ theme }) => ({
+  display: "flex",
+  justifyContent: "center",
+  gap: theme.spacing(6),
+  marginTop: theme.spacing(2),
+  [theme.breakpoints.down("md")]: {
+    flexDirection: "column",
+    alignItems: "center",
+    textAlign: "center",
+  },
+}));
 
-  const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    color: theme.palette.text.secondary,
-    border: 3,
-    borderColor: "primary.main"
-  }));
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  color: theme.palette.text.secondary,
+  border: 3,
+  borderColor: "primary.main"
+}));
+
+const HService = () => {
 
   return (
     <Box sx={{ backgroundColor: "white", minHeight: "80vh" }}>

@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 const { Schema } = mongoose;
 
-const HServiceSchema = new Schema({
+const hServiceSchema = new Schema({
   userId: {
     type: String,
     required: true,
@@ -71,4 +71,4 @@ const HServiceSchema = new Schema({
   timestamps: true,
 });
 
-export default mongoose.model("HService", userSchema)
+export default mongoose.model("HService", hServiceSchema)

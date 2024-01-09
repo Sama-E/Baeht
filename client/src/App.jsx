@@ -15,6 +15,7 @@ import Register from './pages/Auth/Register';
 import Login from './pages/Auth/Login';
 import AddHServices from './pages/Pro/AddHServices';
 import WelcomeNav from './components/Nav/WelcomeNav';
+import Welcome from './pages/Welcome/Welcome';
 
 
 function App() {
@@ -33,11 +34,10 @@ function App() {
     )
   }
 
-  const Layout2 = () => {
+  const LayoutLoginRegister = () => {
     return (
       <Container bgcolor={"background.default"} color={"text.primary"}>
         <Stack spacing={2}>
-          <WelcomeNav />
           <Grid rowSpacing={1} columnSpacing={{ xs: 1, md: 3 }}>
             <Outlet />
           </Grid>
@@ -53,7 +53,7 @@ function App() {
       element: <Layout />,
       children: [
         {
-          path: "/services",
+          path: "/",
           element: <HServices />,
         },
         {
@@ -83,11 +83,11 @@ function App() {
       ],
     },
     {path: "/",
-    element: <Layout2 />,
+    element: <LayoutLoginRegister />,
     children: [
       {
-        path: "/home",
-        element: <Home />,
+        path: "/welcome",
+        element: <Welcome />,
       },
       {
         path: "/register",

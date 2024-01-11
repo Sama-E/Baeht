@@ -1,8 +1,11 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import HServiceCard from '../../components/Cards/HServiceCard';
-import { hservices } from '../../data';
+import { useQuery } from "@tanstack/react-query";
+import newRequest from "../../utils/newRequest";
+import { useLocation } from "react-router-dom";
+
+
 import { Grid, Box, Typography, Stack, styled, Button } from '@mui/material';
-import CustomButton from '/src/components/Custom/CustomButton';
 import TextField from '@mui/material/TextField';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -10,17 +13,6 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Paper from '@mui/material/Paper';
 
-const CustomBox = styled(Box)(({ theme }) => ({
-  display: "flex",
-  justifyContent: "center",
-  gap: theme.spacing(6),
-  marginTop: theme.spacing(2),
-  [theme.breakpoints.down("md")]: {
-    flexDirection: "column",
-    alignItems: "center",
-    textAlign: "center",
-  },
-}));
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -32,75 +24,88 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 const HServices = () => {
-
+  const [mini, setMini] = useState("");
+  const [maxi, setMaxi] = useState("");
   const [sort, setSort] = useState("sales");
-  const [open, setOpen] = useState(false);
-  const minRef = useRef();
-  const maxRef = useRef();
-  const [age, setAge] = useState('');
+
+  const { search } = useLocation();
+
+  const { isLoading, error, data, refetch } = useQuery({
+    queryKey: ["hservices"],
+    queryFn: () =>
+      newRequest
+        .get(
+          `/hservices?${search}&min=${mini}&max=${maxi}&sort=${sort}`
+          )
+        .then((res) => {
+          return res.data;
+        }),
+  });
+
+  // console.log(mini)
+  // console.log(maxi)
+  // console.log(data);
 
   const handleChange = (event) => {
-    setAge(event.target.value);
+    setSort(event.target.value);
   };
 
   const reSort = (type) => {
     setSort(type);
-    setOpen(false);
   };
 
-  const apply = ()=>{
-    console.log(minRef.current.value)
-    console.log(maxRef.current.value)
-  }
+  useEffect(() => {
+    refetch();
+  }, [sort]);
+
+  const apply = () => {
+    refetch();
+  };
 
   return (
     <Box sx={{ flexGrow: 1}} >
-      <Stack spacing={4} p={2}>
         <h1>Home Services</h1>
         <p>
           Explore the boundaries of home services
         </p>
 
         <Box sx={{ flexGrow: 1 }}>
-          <Typography>Budget</Typography>
-          <Grid 
-            container
+          <Typography variant="h5">Budget</Typography>
+          <Stack  
             direction="row"
-            justifyContent="center"
+            justifyContent="space-between"
             alignItems="center"
-            maxWidth="100%"
-            mb="40px"
+            spacing={12}
+            m="20px"
           >
+
             <Grid item xs={12} sm={8} md={3}>
               <TextField 
                 id="standard-basic" 
                 label="Min" 
-                ref={minRef} type="number"
+                value={mini}
+                type="number"
                 size="small"
-                sx={{ mt: 3, mb: 3, width:"140px"}}
+                // sx={{ mt: 3, mb: 3, width:"140px"}}
+                onChange={(e)=>{setMini(e.target.value)}}
               />
             </Grid>
             <Grid item xs={12} sm={8} md={3}>
               <TextField 
                 id="standard-basic" 
                 label="Max" 
-                ref={maxRef} 
+                value={maxi}
                 type="number"
                 size="small"
-                sx={{ mb: 3, width:"140px"}}
+                // sx={{ mt: 1, mb: 3, width:"140px"}}
+                onChange={(e)=>{setMaxi(e.target.value)}}
               />
             </Grid>
             <Grid item xs={12} sm={6} md={2}>
-              {/* <CustomButton 
-                onClick={apply}
-                backgroundColor="#849EB9"
-                color="#fff"
-                buttonText="Apply"
-              /> */}
               <Button
                 type="submit"
                 variant="outlined"
-                sx={{ mb: 5, width:"80px", height: "40px" }}
+                // sx={{ mb: .1, width:"80px", height: "40px" }}
                 onClick={apply}
               >
                 Apply
@@ -109,28 +114,31 @@ const HServices = () => {
           
 
 
-          <Grid item xs={12} sm={8} md={4} >
-            <FormControl sx={{ width:"160px"}}>
+          <Grid item xs={12} sm={8} md={4} sx={{ mt: 3 }}>
+            <FormControl sx={{width:"160px"}}>
               <InputLabel id="demo-simple-select-label" >Sort By</InputLabel>
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
-                value={sort === "sales" ? "Best Selling" : "Newest"}
+                value={sort}
                 label="Sort By"
                 onChange={handleChange}
                 size="small"
               >
-                <MenuItem onClick={() => reSort("createdAt")}>Newest</MenuItem>
+                {/* <MenuItem onClick={() => reSort("createdAt")}>Newest</MenuItem>
                 <MenuItem onClick={() => reSort("sales")}>Best Selling</MenuItem>
-                <MenuItem onClick={() => reSort("sales")}>Popular</MenuItem>
+                <MenuItem onClick={() => reSort("sales")}>Popular</MenuItem> */}
+                <MenuItem onClick={() => reSort("createdAt")} value={"createdAt"}>Newest</MenuItem>
+                <MenuItem onClick={() => reSort("sales")} value={"sales"}>Best Selling</MenuItem>
+                {/* <MenuItem onClick={() => reSort("sales")} value={"sales"}>Popular</MenuItem> */}
               </Select>
             </FormControl>
 
             </Grid>
 
-          </Grid>
+          
+        </Stack>
         </Box>
-      </Stack>
 
       <Grid
         container
@@ -138,11 +146,15 @@ const HServices = () => {
         justifyContent="center"
         alignItems="center"
       >
-        {hservices.map(hservice => ( 
-          <Grid item xs={12} sm={6} md={4} >    
-            <HServiceCard item={hservice} key={hservice.id}/>
-          </Grid>
-          ))}
+        {isLoading
+            ? "loading"
+            : error
+            ? "Something went wrong!"
+            : data.map(hservice => ( 
+              <Grid item xs={12} sm={6} md={4} >    
+                <HServiceCard item={hservice} key={hservice._id}/>
+              </Grid>
+              ))}
       </Grid>
     </Box>
   )

@@ -1,5 +1,11 @@
 import { Box, Grid, Stack, Container } from '@mui/material';
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+import {
+  QueryClient,
+  QueryClientProvider,
+} from "@tanstack/react-query";
+
+
 import Navbar from './components/Nav/Navbar';
 import "./App.scss";
 import Home from './pages/Home/Home';
@@ -19,17 +25,20 @@ import Welcome from './pages/Welcome/Welcome';
 
 
 function App() {
+  const queryClient = new QueryClient();
 
   const Layout = () => {
     return (
       <Container bgcolor={"background.default"} color={"text.primary"}>
-        <Stack spacing={2}>
-          <Navbar />
-          <Grid rowSpacing={1} columnSpacing={{ xs: 1, md: 3 }}>
-            <Outlet />
-          </Grid>
-          <Footer />
-        </Stack>
+        <QueryClientProvider client={queryClient}>
+          <Stack spacing={2}>
+            <Navbar />
+            <Grid rowSpacing={1} columnSpacing={{ xs: 1, md: 3 }}>
+              <Outlet />
+            </Grid>
+            <Footer />
+          </Stack>
+        </QueryClientProvider>
       </Container>
     )
   }
@@ -57,7 +66,7 @@ function App() {
           element: <HServices />,
         },
         {
-          path: "/services/:id",
+          path: "/hservices/single/:id",
           element: <HService />,
         },
         {

@@ -1,3 +1,7 @@
+import newRequest from '../../utils/newRequest';
+import { Link, useParams } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+
 import { Stack, Box, styled, Typography, Container, Grid } from '@mui/material';
 import Paper from '@mui/material/Paper';
 import CardHeader from '@mui/material/CardHeader';
@@ -12,6 +16,7 @@ import CustomButton from "/src/components/Custom/CustomButton";
 import CustomBreadcrumbs from './../../components/Custom/CustomBreadcrumbs';
 import CustomUserInfo from '../../components/Custom/CustomUserInfo';
 import SmallCustomButton from '../../components/Custom/CustomSmallButton';
+
 
 const CustomBox = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -35,10 +40,35 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 const HService = () => {
+  const { id } = useParams();
+
+  const { isLoading, error, data } = useQuery({
+    queryKey: ["hservice"],
+    queryFn: () =>
+      newRequest.get(`/hservice/single/${id}`).then((res) => {
+        return res.data;
+      }),
+  });
+
+  const userId = data?.userId;
+
+  const {
+    isLoading: isLoadingUser,
+    error: errorUser,
+    data: dataUser,
+  } = useQuery({
+    queryKey: ["user"],
+    queryFn: () =>
+      newRequest.get(`/users/${userId}`).then((res) => {
+        return res.data;
+      }),
+    enabled: !!userId,
+  });
 
   return (
     <Box sx={{ backgroundColor: "white", minHeight: "80vh" }}>
       <Container>
+        
         <CustomBreadcrumbs />
         <CustomBox>
         <Box sx={{ flex: "1" }}>

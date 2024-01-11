@@ -40,15 +40,18 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 const HService = () => {
+
   const { id } = useParams();
 
   const { isLoading, error, data } = useQuery({
     queryKey: ["hservice"],
     queryFn: () =>
-      newRequest.get(`/hservice/single/${id}`).then((res) => {
+      newRequest.get(`/hservices/single/${id}`).then((res) => {
         return res.data;
       }),
   });
+
+  
 
   const userId = data?.userId;
 
@@ -65,6 +68,9 @@ const HService = () => {
     enabled: !!userId,
   });
 
+  console.log(id)
+  console.log(data)
+
   return (
     <Box sx={{ backgroundColor: "white", minHeight: "80vh" }}>
       <Container>
@@ -75,23 +81,19 @@ const HService = () => {
             <Item>
               <Box>
                 <Typography variant="h6" gutterBottom>
-                  Title
+                  {data.title}
                 </Typography>
-                Price
+                $ {data.price}.99
               </Box>
-              <Box> Desc </Box>
+              <Box> {data.shortDesc} </Box>
               <Box>
-                <Box> 2 days to delivery</Box>
+                <Box> {data.deliveryDate} </Box>
                 <List sx={{ width:'100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-                  <ListItem>
-                    Service 1
+                  {data.features.map((feature) => (
+                  <ListItem key={feature}>
+                    {feature}
                   </ListItem>
-                  <ListItem>
-                    Service 2
-                  </ListItem>
-                  <ListItem>
-                    Service 3
-                  </ListItem>
+                  ))}
                 </List>
                 <Box sx={{display:"flex", justifyContent:"center", alignItems:"center"}}>
                   <CustomButton
@@ -108,7 +110,7 @@ const HService = () => {
             <Stack spacing={2}>
               <Item>
                 <Typography variant="h5" gutterBottom>
-                  Title
+                  {data.title}
                 </Typography>
               </Item>
                 <CustomUserInfo />
@@ -117,7 +119,7 @@ const HService = () => {
               </Item>
               <Item>
                 <Typography variant="h6" gutterBottom>About Service</Typography>
-                <p>Something</p>
+                <p>{data.desc}</p>
               </Item>
               <Item>
                 <Stack>

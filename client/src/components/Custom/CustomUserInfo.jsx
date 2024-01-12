@@ -4,7 +4,7 @@ import Avatar from '@mui/material/Avatar';
 import star from "/src/assets/hservices/star.png";
 
 
-const CustomUserInfo = () => {
+const CustomUserInfo = ({data}) => {
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
     ...theme.typography.body2,
@@ -13,6 +13,7 @@ const CustomUserInfo = () => {
     border: 3,
     borderColor: "primary.main"
   }));
+  console.log(data)
 
   return (
     <Item>
@@ -20,10 +21,10 @@ const CustomUserInfo = () => {
         <Avatar 
           sx={{ height: '45px', width: '45px', mr:2}} 
           alt="Pro"
-          src="https://images.pexels.com/photos/580151/pexels-photo-580151.jpeg?auto=compress&cs=tinysrgb&w=1600"
+          src={data.img}
         />
         <Box sx={{justifyContent: 'flex-start' }}>  
-          <Typography sx={{ fontSize: 12 }}>John Green</Typography>
+          <Typography sx={{ fontSize: 12 }}>{data.firstName} {data.lastName}</Typography>
           <img src={star} width="10" height="10" />
           <img src={star} width="10" height="10" />
           <img src={star} width="10" height="10" />

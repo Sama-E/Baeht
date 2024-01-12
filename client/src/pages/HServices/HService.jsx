@@ -68,8 +68,8 @@ const HService = () => {
     enabled: !!userId,
   });
 
-  console.log(id)
-  console.log(data)
+  // console.log(dataUser)
+  // console.log(data)
 
   return (
     <Box sx={{ backgroundColor: "white", minHeight: "80vh" }}>
@@ -81,20 +81,20 @@ const HService = () => {
             <Item>
               <Box>
                 <Typography variant="h6" gutterBottom>
-                  {data.title}
+                  {/* {data.title} */}
                 </Typography>
-                $ {data.price}.99
+                {/* $ {data.price}.99 */}
               </Box>
-              <Box> {data.shortDesc} </Box>
+              {/* <Box> {data.shortDesc} </Box> */}
               <Box>
-                <Box> {data.deliveryDate} </Box>
+                {/* <Box> {data.deliveryDate} </Box>
                 <List sx={{ width:'100%', maxWidth: 360, bgcolor: 'background.paper' }}>
                   {data.features.map((feature) => (
                   <ListItem key={feature}>
                     {feature}
                   </ListItem>
                   ))}
-                </List>
+                </List> */}
                 <Box sx={{display:"flex", justifyContent:"center", alignItems:"center"}}>
                   <CustomButton
                     backgroundColor="#849EB9"
@@ -110,23 +110,25 @@ const HService = () => {
             <Stack spacing={2}>
               <Item>
                 <Typography variant="h5" gutterBottom>
-                  {data.title}
+                  {/* {data.title} */}
                 </Typography>
               </Item>
-                <CustomUserInfo />
+              <CustomUserInfo data = {dataUser}/>
+                {/* <CustomUserInfo /> */}
               <Item>
                 <ImageSlider />
               </Item>
               <Item>
                 <Typography variant="h6" gutterBottom>About Service</Typography>
-                <p>{data.desc}</p>
+                {/* <p>{data.desc}</p> */}
               </Item>
               <Item>
                 <Stack>
                   <Item> 
                     <Typography variant="h6" gutterBottom>About Seller</Typography>
                     <Stack spacing={{ xs: 1, sm: 2 }} direction="row" useFlexGap flexWrap="wrap">
-                    <CustomUserInfo />
+                    <CustomUserInfo data = {dataUser}/>
+                    {/* <CustomUserInfo /> */}
                     <SmallCustomButton
                       backgroundColor="#849EB9"
                       color="#fff"
@@ -144,7 +146,7 @@ const HService = () => {
                         <Typography variant="subtitle2" gutterBottom>Member since</Typography>
                         <Typography variant="body2" gutterBottom>Aug 2022</Typography>
                         <Typography variant="subtitle2" gutterBottom>Certified</Typography>
-                        <Typography variant="body2" gutterBottom>City, State</Typography>
+                        {/* <Typography variant="body2" gutterBottom>{dataUser.city}, {dataUser.state}</Typography> */}
                       </Grid>
                     </Grid>
                   </Item>
